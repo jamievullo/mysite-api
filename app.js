@@ -3,6 +3,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sendGrid = require('@sendGrid/mail');
 const app = express();
+require('dotenv').config();
+const api_key = process.env.REACT_APP_API_KEY
+
+console.log(process.env)
 
 app.use(bodyParser.json());
 
@@ -23,7 +27,7 @@ app.post('/api/email', (req, res, next) => {
 
     console.log(req.body);
 
-    sendGrid.setApiKey('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');
+    sendGrid.setApiKey(api_key);
     const msg = {
         to: 'jvullo01@gmail.com',
         // name: req.body.name,
